@@ -1,6 +1,4 @@
-import { Container, Box, Paper, TextField, Button, Typography, InputAdornment, IconButton, Select, MenuItem } from "@mui/material";
-import LoginIcon from "@mui/icons-material/Login";
-import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
+import { Container, Box, Paper, TextField, Typography, InputAdornment, IconButton, Select, InputLabel, FormControl, MenuItem } from "@mui/material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { Link } from "react-router-dom";
@@ -115,7 +113,7 @@ export default function SignUpPage() {
                 }
 
                 if (data != null) {
-                    alert("Successfully created profile!")
+                    alert("Successfully created an account")
                 }
             }
 
@@ -130,6 +128,7 @@ export default function SignUpPage() {
         <>
             <Box sx={{ alignContent: 'center', height: '100vh' }}>
                 <Container maxWidth="xs" component={Paper} sx={{ p: 3 }}>
+                <Typography variant="h5" sx={{ p: 1, fontSize: '1rem'}} color="Green" align="center">RAIHANIE'S WEBSITE</Typography>
                     <Typography variant="h5" sx={{ p: 1 }} align="center">Sign Up</Typography>
                     {
                         isError &&
@@ -182,26 +181,29 @@ export default function SignUpPage() {
                     </Box>
                     
                     <Box sx={{ p: 1 }}>
-                        <Select
-                            fullWidth
-                            value={profile.gender}
-                            label="Gender"
-                            onChange={(e) => setProfileDetails("gender", e.target.value)}
-                                
-                        >
-                            <MenuItem value={"male"}>Male</MenuItem>
-                            <MenuItem value={"female"}>Female</MenuItem>
-                        </Select>    
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+                            <Select
+                                label="Gender"
+                                value={profile.gender}
+                                onChange={(e) => setProfileDetails("gender", e.target.value)}
+                                    
+                            >
+                                <MenuItem value={"male"}>Male</MenuItem>
+                                <MenuItem value={"female"}>Female</MenuItem>
+                            </Select>    
+                        </FormControl>
                     </Box>
 
                     <Box sx={{ p: 1 }}>
-                        <DatePicker sx={{ width: "100%" }} onChange={(value) => setProfileDetails("birthdate", value)} />
+                        
+                        <DatePicker label="Birthdate" sx={{ width: "100%" }} onChange={(value) => setProfileDetails("birthdate", value)} />
                     </Box>
                     <Box sx={{ p: 1 }}>
-                        <TextField fullWidth label="Contact number" value={profile.contact_no} variant="outlined" onChange={(e) => setProfileDetails("contact_no", e.target.value)} />
+                        <TextField fullWidth label="Contact No." value={profile.contact_no} variant="outlined" onChange={(e) => setProfileDetails("contact_no", e.target.value)} />
                     </Box>
                     <Box sx={{ p: 1 }}>
-                        <TextField maxRows={3} multiline rows={3} fullWidth label="Address" value={profile.address} variant="outlined" onChange={(e) => setProfileDetails("address", e.target.value)} />
+                        <TextField maxRows={3} fullWidth label="Address" value={profile.address} variant="outlined" onChange={(e) => setProfileDetails("address", e.target.value)} />
                     </Box>
                     <Box sx={{ p: 1 }}>
                         <LoadingButton loading={loading} onClick={signUp} sx={{ p: 1 }} fullWidth variant="contained">Sign up</LoadingButton>

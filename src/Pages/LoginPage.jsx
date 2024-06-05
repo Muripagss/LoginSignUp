@@ -1,6 +1,4 @@
 import { Container, Box, Paper, TextField, Button, Typography, InputAdornment, IconButton } from "@mui/material";
-import LoginIcon from "@mui/icons-material/Login";
-import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { Link, useNavigate } from "react-router-dom";
@@ -44,7 +42,7 @@ export default function LoginPage() {
         <>
             <Box sx={{ alignContent: 'center', height: '100vh' }}>
                 <Container maxWidth="xs" component={Paper} sx={{ p: 3 }}>
-                    <Typography variant="h5" sx={{ p: 1 }}align="center">Login Window</Typography>
+                    <Typography variant="h5" sx={{ p: 1 }} color="Green" align="center">RAIHANIE'S WEBSITE</Typography>
                     {
                         isError &&
                         <Box>
@@ -72,7 +70,7 @@ export default function LoginPage() {
                         />
                     </Box>
                     <Box sx={{ p: 1 }}>
-                        <Button size="large" onClick={login} fullWidth variant="contained" endIcon={<LoginIcon />}>Login</Button>
+                        <Button size="large" onClick={login} fullWidth variant="contained">Login</Button>
                     </Box>
                 
                     <Box sx={{ p: 1 }}>
